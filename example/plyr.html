@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hlsjs-upimg-wrapper DEMO</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@latest/dist/plyr.css">
+  <script src="https://cdn.jsdelivr.net/npm/plyr@latest/dist/plyr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hlsjs-upimg-wrapper@latest"></script>
+</head>
+
+<body>
+  <div class="container">
+    <video id="video" data-url="https://ask.qcloudimg.com/draft/6954355/5qir0xlm34.jpg" />
+  </div>
+
+  <script>
+    const video = document.getElementById("video")
+    const player = new Plyr(video)
+    const wrapper = new HlsjsUpimgWrapper(Hls)
+    const hls = wrapper.createPlayer({}, {
+      offset: 2999
+    })
+    hls.loadSource(video.dataset.url)
+    hls.attachMedia(video)
+  </script>
+</body>
+
+<style>
+  .container {
+    margin: 60px auto;
+    max-width: 800px;
+  }
+
+  #video {
+    width: 100%;
+  }
+</style>
+
+</html>
